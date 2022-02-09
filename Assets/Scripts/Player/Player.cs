@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	[SerializeField] private Score score;
 	[SerializeField] private Transform fixedPivot;
 	[SerializeField] private float velocityForce;
 
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
 			{
 				this.transform.localScale += Vector3.one * prop.GetGrowthProgression(); // 1.1f;
 				numberCollected+= prop.GetCollectValue();
+				score.AddScore(prop.GetCollectValue() * 100);
 				OnCollected();
 			}
 		}
